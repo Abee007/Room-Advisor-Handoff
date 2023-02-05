@@ -1,9 +1,14 @@
-# Room-Advisor-v0
+# Yale RoomAdvisor
 
-Alara and Abraham's Final Project @Yale
+Search, Shop, Review dorm rooms here at Yale!
 
 To run:
+```
+cd backend
+npm run dev
+```
 
-<p>1.cd backend</p>
-<p>2.npm run dev</p>
 <p> Fix linting issues by running: npx standard --fix </p>
+
+# Credits
+We appreciate Alara and Abraham for providing the [starting code](https://github.com/Abee007/Room-Advisor-Handoff) to RoomAdvisor in their senior thesis. 
