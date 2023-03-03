@@ -30,9 +30,8 @@ passport.serializeUser( (user, done) => {
 });
 passport.deserializeUser( (user, done) => {
     done(null, user);
-});
-app.use(passport.initialize());
-app.use(passport.session());
+})
+
 
 // Declare external packages
 var config = require("./config"); //Do not push this to the repository
@@ -45,6 +44,8 @@ var cookieSession = require("cookie-session");
 // Declare some middleware (functions that can modify the request and response objects)
 app.use(express.urlencoded( { extended: true }));
 app.use(express.json());
+// use express-session for session management
+
 if (isProduction) {
     app.set("trust proxy", 1);
     app.use(
@@ -81,6 +82,10 @@ if (isProduction) {
         })
     );
 }
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Asynchronous server startup: allows support for multiprocessing
 module.exports.listen = () => {
