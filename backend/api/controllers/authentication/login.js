@@ -41,13 +41,10 @@ exports.logout = function (request, result) {
 }
 
 exports.cas = function (request, result) {
-    passport.authenticate("cas", { failureRedirect: "/auth/login/failed" },
-    function (request, result) {
-        // Successful authentication, redirect check if user is valid.
+    // Successful authentication, redirect check if user is valid.
 
-        // INSTEAD OF JUST REDIRECTING, SET USER NETID ON A COOKIE
-        // RETRIEVE THE COOKIE FROM /auth/login/success
-        console.log("redirect to check user validity");
-        res.redirect(`${CLIENT_URL}/viewreviews`);
-    });
+    // INSTEAD OF JUST REDIRECTING, SET USER NETID ON A COOKIE
+    // RETRIEVE THE COOKIE FROM /auth/login/success
+    console.log("redirect to check user validity");
+    result.redirect(`${CLIENT_URL}/viewreviews`);
 }

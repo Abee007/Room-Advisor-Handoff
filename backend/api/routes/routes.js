@@ -1,3 +1,4 @@
+const passport = require("passport");
 module.exports = function(app) {
     // Add all the routes to our APIs here
     // app.route([url]) points to a method, tell Express which method it should execute with
@@ -16,7 +17,7 @@ module.exports = function(app) {
     app.route("/auth/login/success").get(authcontroller.loginSuccess);
     app.route("/auth/login/failed").get(authcontroller.loginFailed);
     app.route("/auth/cas/logout").get(authcontroller.logout);
-    app.route("/auth/cas").get(authcontroller.cas);
+    app.route("/auth/cas").get(passport.authenticate("cas", { failureRedirect: "/auth/login/failed" }), authcontroller.cas);
 
     var reviewscontroller = require("../controllers/reviews");
     app.route("/viewreviews").get(reviewscontroller.getReviews);
