@@ -2,7 +2,7 @@
 // Declare the Express server and the port that it will listen on
 var express = require("express");
 var app = express();
-var port = process.env.PORT || 9000;
+var port = process.env.PORT || 4000;
 
 const isBeta = process.env.NODE_ENV === "beta";
 const isProduction = process.env.NODE_ENV === "production" || isBeta;
