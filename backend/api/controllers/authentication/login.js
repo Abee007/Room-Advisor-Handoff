@@ -3,6 +3,7 @@ const passport = require("passport");
 const isBeta = process.env.NODE_ENV === "beta";
 const isProduction = process.env.NODE_ENV === "production" || isBeta;
 var CLIENT_URL = "http://localhost:3000";
+
 if (isProduction) {
     if (isBeta) {
         CLIENT_URL = "https://beta.roomadvisor.org";
@@ -40,6 +41,8 @@ exports.logout = function (request, result) {
     result.redirect("http://localhost:3000/logout"); // what...?
 }
 
+exports.cas_passport_auth = passport.authenticate("cas", { failureRedirect: "/auth/login/failed" })
+
 exports.cas = function (request, result) {
     // Successful authentication, redirect check if user is valid.
 
@@ -47,4 +50,5 @@ exports.cas = function (request, result) {
     // RETRIEVE THE COOKIE FROM /auth/login/success
     console.log("redirect to check user validity");
     result.redirect(`${CLIENT_URL}/viewreviews`);
+    
 }
