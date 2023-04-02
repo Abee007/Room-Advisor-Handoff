@@ -1,4 +1,4 @@
-name: Build and Deploy to S3 Bucket (Beta)
+name: Build and Deploy to S3 Bucket
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy-beta:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -21,9 +21,11 @@ jobs:
           node-version: '18.x'
 
       - name: Install dependencies
+        working-directory: frontend/
         run: npm install
 
       - name: Build React app
+        working-directory: frontend/
         run: npm run build
 
       - name: Configure AWS credentials
